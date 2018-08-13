@@ -8,21 +8,21 @@ const firestore = new Firestore({
 const settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 
-
-const document = firestore.doc('/User/33');
+const collection = firestore.collection('User')
+const document = collection.doc("33");
 
 // Enter new data into the document.
-document.set({
-  name: 'Welcome to Firestore',
-  mail: 'Welcome to Firestore',
-  a: 'Welcome to Firestore',
-  b: 'Welcome to Firestore',
-  r: 'Welcome to Firestore',
-  t: 'Welcome to Firestore',
-  t: 'Welcome to Firestore',
-}).then(() => {
-  // Document created successfully.
-});
+// document.set({
+//   name: 'Welcome to Firestore',
+//   mail: 'Welcome to Firestore',
+//   a: 'Welcome to Firestore',
+//   b: 'Welcome to Firestore',
+//   r: 'Welcome to Firestore',
+//   t: 'Welcome to Firestore',
+//   t: 'Welcome to Firestore',
+// }).then(() => {
+//   console.log('push succeed');
+// });
 
 // // Update an existing document.
 // document.update({
@@ -32,8 +32,20 @@ document.set({
 // });
 
 // // Read the document.
-// var a = document.get(name).then(doc => {
-//   // Document read successfully.
+// var a = document.get().then(doc => {
+//   if (!doc.exists) {
+//     console.log('No such document!');
+//   } else {
+//     console.log('Document data:', doc.data('name'));
+//     console.log('1');
+//   }
+// });
+var brazilCities = collection.where('name', '==', 'test');
+console.log(brazilCities);
+// document.getCollections().then(collections => {
+//   collections.forEach(collection => {
+//     console.log('Found subcollection with id:', collection.id);
+//   });
 // });
 // console.log(a);
 
