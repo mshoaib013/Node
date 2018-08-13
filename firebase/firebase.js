@@ -10,7 +10,14 @@ var config = {
 admin.initializeApp(config);
 var db = admin.database();
 var myRef = db.ref("DEPT").child("ECE").child("Slides").child("CSE225");
-
+// myRef.on("value", function(snapshot) {
+//   // arr.push(snap.val);
+//   console.log(snapshot.key);
+//   console.log(snapshot.val());
+//   // console.log(snap.key);
+//   // console.log(snap.child('Lecture 1').val());
+//   // console.log(snap.numChildren());
+// });
 myRef.on("child_added", function(snapshot, prevChildKey) {
   var key = snapshot.key;
   console.log(key);
